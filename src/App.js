@@ -1,8 +1,12 @@
-import logo from "./logo.svg";
 import "./App.css";
 import styled from "styled-components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
+import Home from "./pages/Home";
+import Team from "./pages/Team";
+import Project from "./pages/Project";
+import Safety from "./pages/Safety";
+import HumanPractices from "./pages/HumanPractices";
+import Awards from "./pages/Awards";
 
 const Main = styled.div`
   background-color: "E1E1E1";
@@ -25,11 +29,11 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/projects" element={<Home />} />
-          <Route path="/shinanigans" element={<Home />} />
-          <Route path="/life" element={<Home />} />
-
-          <Route path="/design" element={<Home />} />
+          <Route path="/team" element={<Team />} />
+          <Route path="/project" element={<Project />} />
+          <Route path="/safety" element={<Safety />} />
+          <Route path="/human-practices" element={<HumanPractices />} />
+          <Route path="/awards" element={<Awards />} />
         </Routes>
       </main>
     </BrowserRouter>
