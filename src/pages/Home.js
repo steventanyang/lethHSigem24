@@ -1,8 +1,10 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { useSpring, animated } from "@react-spring/web";
 import useIsVisible from "../components/isVisible";
 import NavBar from "../components/NavBar";
+import Image from "react-bootstrap";
+import HomeCarousel from "../components/Carousel";
 
 const Overlay = styled.div`
   position: fixed;
@@ -75,15 +77,47 @@ const Title = styled.div`
 
 const TestContainer = styled.div`
   width: 100%;
-  height: 900px;
+  height: ${(props) => props.height || "100vh"};
   display: flex;
-  background-color: #fff;
+  background-color: ${(props) => props.backgroundColor || "#fff"};
+`;
+
+const Body = styled.div`
+  width: 100%;
+  height: ${(props) => props.height || "100vh"};
+  display: flex;
+  background-color: ${(props) => props.backgroundColor || "#fff"};
+  padding: 5px;
+  align-items: center;
+  justify-content: center;
+`;
+
+const SideNav = styled.div`
+  width: 20%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const SideNavButtons = styled.button`
+  width: 100%;
+  height: 10%;
+  background-color: #dda5b2;
+  border: none;
+  border-radius: 10px;
+  margin-top: 10%;
+`;
+
+const Test = styled.div`
+  width: 90%;
+  justify-content: center;
+  height: 70%;
 `;
 
 const Home = () => {
   const [jiggleIdx, setJiggleIdx] = useState(null);
-  const section1Ref = useRef(null);
-  const isVisible = useIsVisible(section1Ref);
 
   const handleUdderClick = (idx) => {
     setJiggleIdx(idx);
@@ -104,7 +138,7 @@ const Home = () => {
       <NavBar />
 
       {/* udder body */}
-      <UdderBodyContainer ref={section1Ref}>
+      <UdderBodyContainer>
         <UdderBody>
           <Title>BO FIND</Title>
         </UdderBody>
@@ -121,10 +155,13 @@ const Home = () => {
           />
         ))}
       </UdderContainer>
+      {/* <Test>
+        <HomeCarousel />
+      </Test> */}
 
-      <TestContainer />
-      <TestContainer />
-      <TestContainer />
+      <Body/>
+
+      <TestContainer backgroundColor="#653159" height="20vh" />
     </Overlay>
   );
 };
